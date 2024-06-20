@@ -459,22 +459,18 @@ import * as jwt from 'jsonwebtoken';
 import axios from 'axios';
 import * as FormData from 'form-data';
 
+interface ApiKey {
+  account_email: string;
+  account_id: number;
+  key_id: string;
+  private_key: string;
+}
+
 export default class VoximplantApiClient {
-  private key!: { account_email: string; account_id: number; key_id: string; private_key: string };
+  private key!: ApiKey;
 
-  onReady: (client: VoximplantApiClient) => void;
-
-  constructor(pathToCredentials?: string, private host?: string) {
-    const path = process.env.VOXIMPLANT_CREDENTIALS || pathToCredentials;
-    fs.readFile(path, 'utf8', (err, data) => {
-      if (err) {
-        throw err;
-      }
-      this.key = JSON.parse(data);
-      if (this.onReady) {
-        this.onReady(this);
-      }
-    });
+  constructor(key: ApiKey, private host?: string) {
+    this.key = key;
   }
 
   public generateAuthHeader() {
