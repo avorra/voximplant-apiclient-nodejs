@@ -1,5 +1,6 @@
 {
   "name": "@voximplant/apiclient-nodejs",
+  "packageManager": "yarn@4.3.1",
   "version": "2.10.0",
   "description": "Voximplant API client library",
   "main": "dist/index.js",
