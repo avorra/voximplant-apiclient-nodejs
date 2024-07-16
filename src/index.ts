@@ -466,7 +466,7 @@ interface ApiKey {
   private_key: string;
 }
 
-export default class VoximplantApiClient {
+class VoximplantApiClient {
   private key!: ApiKey;
 
   constructor(key: ApiKey, private host?: string) {
@@ -6048,3 +6048,5 @@ export default class VoximplantApiClient {
     },
   };
 }
+
+export = VoximplantApiClient;
